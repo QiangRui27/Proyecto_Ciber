@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('vulnerabilidades', function (Blueprint $table) {
             $table->id();
             $table->string('cve_id')->unique();
-            $table->string('nombre_vulnerabilidad')
+            $table->string('nombre_vulnerabilidad');
             $table->text('descripcion');
             $table->float('CVSSP')->nullable();
             $table->string('criticidad')->nullable();               
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vulnerabilidades');
+        Schema::dropIfExists('vulnerabilidad');
     }
 };
