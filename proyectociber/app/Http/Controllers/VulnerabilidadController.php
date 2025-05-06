@@ -32,7 +32,7 @@ class vulnerabilidadController extends Controller
         $v->referencias = $request->input('referencias');
         $v->save();
         // Validar y guardar los datos en la base de datos
-        return redirect()->route('vulnerabilidad.index');
+        return redirect()->route('vulnerabilidades.index');
     }
 
     public function show($id)
@@ -47,9 +47,7 @@ class vulnerabilidadController extends Controller
     {
         // Lógica para mostrar el formulario de edición de una vulnerabilidad
         $vulnerabilidad = vulnerabilidad::find($id);
-        return [
-            'vulnerabilidad' => $vulnerabilidad,
-        ];
+        return view('vulnerabilidades.edit', compact('vulnerabilidad'));
     }
 
     public function update(Request $request, $id)
@@ -65,7 +63,7 @@ class vulnerabilidadController extends Controller
         $v->referencias = $request->input('referencias');
         $v->save();
         // Validar y guardar los datos en la base de datos
-        return redirect()->route('vulnerabilidad.index');
+        return redirect()->route('vulnerabilidades.index');
     }
 
     public function destroy($id)
