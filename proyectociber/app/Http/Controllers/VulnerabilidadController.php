@@ -9,7 +9,7 @@ class vulnerabilidadController extends Controller
 {
     public function index()
     {
-        $vulnerabilidadList = Vulnerabilidad::all();
+        $vulnerabilidadList = Vulnerabilidad::paginate(12);
         return view('vulnerabilidades/vulnerabilidades', compact('vulnerabilidadList'));
     }
 
