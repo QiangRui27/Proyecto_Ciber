@@ -7,10 +7,17 @@ use App\Models\Vulnerabilidad;
 
 class vulnerabilidadController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $vulnerabilidadList = Vulnerabilidad::paginate(12);
-        return view('vulnerabilidades/vulnerabilidades', compact('vulnerabilidadList'));
+        $query = Vulnerabilidad::query();
+
+    if ($request->has('cve') && $request->cve !== null) {
+        $query->where('cve_id', 'like', '%' . $request->cve . '%');
+    }
+
+    $vulnerabilidadList = $query->paginate(10);
+
+    return view('vulnerabilidades/vulnerabilidades', compact('vulnerabilidadList'));
     }
 
     public function create()
